@@ -11,15 +11,6 @@ const pool = new Pool({
 });
 export default async function List() {
     let client;
-    // let db = (await connectDB).db(`${process.env.DB_DB}`);
-    // let result = await db.collection(`${process.env.DB_LIST}`).find().toArray();
-    // return (
-    //     <div classNmae="w-10/12 max-w-7xl mx-auto">
-    //         <MyPage result={result}/>
-    //         <ListItem result={result} />
-    //         {/* <Link href='./write'><button className="text-base m-2 p-5 border border-black rounded-xl">글 쓰기</button></Link> */}
-    //     </div>
-    // )
     try {
         const client = await pool.connect();
         const result = await client.query(`SELECT * FROM ${process.env.DB_LIST}`);
@@ -31,7 +22,7 @@ export default async function List() {
             <ListItem result={rows} />
             {/* <Link href='./write'><button className="text-base m-2 p-5 border border-black rounded-xl">글 쓰기</button></Link> */}
           </div>
-        );
+        )
       } catch (error) {
         console.error('Error:', error);
       } finally {
