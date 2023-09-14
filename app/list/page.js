@@ -1,4 +1,4 @@
-import { connectDB } from "@/util/database.js"
+import { connectDB } from "@/lib/db"
 import Link from 'next/link'
 import {Pool} from 'pg';
 import ListItem from "./list_item";
@@ -21,7 +21,7 @@ export default async function List() {
     //     </div>
     // )
     try {
-        client = await pool.connect();
+        const client = await pool.connect();
         const result = await client.query(`SELECT * FROM ${process.env.DB_LIST}`);
         const rows = result.rows;
     
