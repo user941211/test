@@ -1,11 +1,13 @@
 'use client'
 import Link from "next/link"
 
-export default function ListItem({result}){
+export const dynamic = 'force-dynamic'
+
+export default function MyPage({result}){
     return(
         <div>
             <ul>
-                <p className="text-4xl font-bold text-center mt-4">글 목록</p>
+                <p className="text-4xl font-bold text-center mt-4">서명 이력</p>
                 {result.map((a, i) =>
                     <li key={i}>
                         <Link prefetch={false} href={'/detail/' + result[i]._id}>
